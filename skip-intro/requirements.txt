@@ -1,0 +1,17 @@
+boto3
+scikit-learn
+numpy
+pandas
+matplotlib
+scipy
+pillow
+jupyterlab
+seaborn
+opencv-contrib-python
+requests
+imutils
+pixiedust
+
+scenedetect
+scikit-image
+
