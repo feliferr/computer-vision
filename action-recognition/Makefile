@@ -27,3 +27,6 @@ help:
 
 setup:
 	pip install -r requirements.txt
+
+train:
+	python src/train.py -i $(pwd)/input/data/data.csv -o $(pwd)/output -e 100 -lr 1e-3 -bs 32 -d cpu:0
