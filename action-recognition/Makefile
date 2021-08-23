@@ -30,3 +30,6 @@ setup:
 
 train:
 	python src/train.py -i $(shell pwd)/input/data/data.csv -o $(shell pwd)/output -e 100 -lr 1e-3 -bs 32 -d cpu:0
+
+test:
+	python src/test.py -m $(shell pwd)/output/model.pth -l $(shell pwd)/output/lb.pkl -i $(shell pwd)/input/videos/6096924-360p_487k_h264.mp4 -o $(shell pwd)/output -d cpu:0
