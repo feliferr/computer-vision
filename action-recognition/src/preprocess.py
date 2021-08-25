@@ -2,14 +2,15 @@ from operator import index
 import pandas as pd
 import joblib
 import os
+import argparse
 import numpy as np
 
 from tqdm import tqdm
 from sklearn.preprocessing import LabelBinarizer
 
-def run(root_path, output_path):
-    all_paths = os.listdir(root_path)
-    folder_paths = [folder_path for folder_path in all_paths if os.path.isdir(os.path.join(root_path, folder_path))]
+def main(input_path, output_path):
+    all_paths = os.listdir(input_path)
+    folder_paths = [folder_path for folder_path in all_paths if os.path.isdir(os.path.join(input_path, folder_path))]
     print(f"Folder paths: {folder_paths}")
     print(f"Number of folders :{len(folder_paths)}")
 
@@ -23,12 +24,12 @@ def run(root_path, output_path):
     for i, folder_path in tqdm(enumerate(folder_paths), total=len(folder_paths)):
         if folder_path not in create_labels:
             continue
-        image_paths = os.listdir(os.path.join(root_path, folder_path))
+        image_paths = os.listdir(os.path.join(input_path, folder_path))
         label = folder_path
 
         for image_path in image_paths:
             if image_path.split('.')[-1] in image_formats:
-                data.loc[counter, 'image_path'] = f"{root_path}/{folder_path}/{image_path}"
+                data.loc[counter, 'image_path'] = f"{input_path}/{folder_path}/{image_path}"
                 labels.append(label)
                 counter += 1
 
@@ -53,7 +54,7 @@ def run(root_path, output_path):
     print(f"Total instances: {len(data)}")
 
     # save to csv
-    data.to_csv(os.path.join(root_path,"data.csv"), index=False)
+    data.to_csv(os.path.join(input_path,"data.csv"), index=False)
 
     # saving the binarized labels
     print("Saving the binarized labels in pickled file")
@@ -62,4 +63,11 @@ def run(root_path, output_path):
     print(data.head(5))
 
 if __name__ == "__main__":
-    run("/Users/felipe.ferreira/dev/git/personal/computer-vision/action-recognition/input/data","/Users/felipe.ferreira/dev/git/personal/computer-vision/action-recognition/output")
+    ap = argparse.ArgumentParser()
+    ap.add_argument("-i", "--input_path", required=True, help="Path to the root folder containing dataset images")
+    ap.add_argument("-o", "--output_path", required=True, help="Path to save the preprocessed data")
+
+    args = ap.parse_args()
+    arguments = args.__dict__
+    
+    main(arguments)

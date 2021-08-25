@@ -26,7 +26,10 @@ help:
 	printf "\n"
 
 setup:
-	pip install -r requirements.txt
+	pip install -r requirements.
+
+preprocess:
+	python src/preprocess.py -i $(shell pwd)/input/data -o $(shell pwd)/output
 
 train:
 	python src/train.py -i $(shell pwd)/input/data/data.csv -o $(shell pwd)/output -e 100 -lr 1e-3 -bs 32 -d cpu:0
