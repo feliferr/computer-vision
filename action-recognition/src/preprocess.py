@@ -69,5 +69,5 @@ if __name__ == "__main__":
 
     args = ap.parse_args()
     arguments = args.__dict__
-    
-    main(arguments)
+
+    main(**arguments)

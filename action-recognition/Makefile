@@ -26,7 +26,7 @@ help:
 	printf "\n"
 
 setup:
-	pip install -r requirements.
+	pip install -r requirements.txt
 
 preprocess:
 	python src/preprocess.py -i $(shell pwd)/input/data -o $(shell pwd)/output
