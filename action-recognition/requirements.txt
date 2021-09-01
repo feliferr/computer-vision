@@ -5,3 +5,10 @@ torchvision==0.10.0
 tqdm==4.62.1
 albumentations==1.0.3
 imutils==0.5.4
+apache-beam[gcp]
+click
+gcloud
+scenedetect==0.5.1.1
+google-cloud-storage
+google-auth-oauthlib
+google-auth

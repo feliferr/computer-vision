@@ -6,7 +6,7 @@ import cv2
 import torch.nn as nn
 import torch.nn.functional as F
 import time
-import cnn_models
+import src.cnn_models
 import albumentations
 
 from torchvision.transforms import transforms

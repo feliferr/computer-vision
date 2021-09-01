@@ -36,3 +36,14 @@ train:
 
 test:
 	python src/test.py -m $(shell pwd)/output/model.pth -l $(shell pwd)/output/lb.pkl -i $(shell pwd)/input/videos/6096924-360p_487k_h264.mp4 -o $(shell pwd)/output -d cpu:0
+
+test_dataflow:
+	python -m src.dataflow_run \
+	--path-model "gs://rec-alg/test/action-recognition/model.pth" \
+	--label-bin "gs://rec-alg/test/action-recognition/lb.pkl" \
+	--input "gs://rec-alg/datasets/videos_paths.csv" \
+	--output "gs://rec-alg/test/action-recognition/output/results" \
+	--device "cpu:0" \
+	--max-num-workers 20 \
+	--worker-machine-type "n2-standard-4" \
+	--project-id "recomendacao-gcom" \
