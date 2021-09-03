@@ -35,7 +35,7 @@ train:
 	python src/train.py -i $(shell pwd)/input/data/data.csv -o $(shell pwd)/output -e 100 -lr 1e-3 -bs 32 -d cpu:0
 
 test:
-	python src/test.py -m $(shell pwd)/output/model.pth -l $(shell pwd)/output/lb.pkl -i $(shell pwd)/input/videos/6096924-360p_487k_h264.mp4 -o $(shell pwd)/output -d cpu:0
+	python src/test_model.py -m $(shell pwd)/output/model.pth -l $(shell pwd)/output/lb.pkl -i $(shell pwd)/input/videos/6096924-360p_487k_h264.mp4 -o $(shell pwd)/output -d cpu:0
 
 test_dataflow:
 	python -m src.dataflow_run \
@@ -45,5 +45,5 @@ test_dataflow:
 	--output "gs://rec-alg/test/action-recognition/output/results" \
 	--device "cpu:0" \
 	--max-num-workers 20 \
-	--worker-machine-type "n2-standard-4" \
-	--project-id "recomendacao-gcom" \
+	--worker-machine-type "n2-standard-2" \
+	--project-id "recomendacao-gcom"

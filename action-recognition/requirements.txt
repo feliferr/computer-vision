@@ -9,6 +9,6 @@ apache-beam[gcp]
 click
 gcloud
 scenedetect==0.5.1.1
-google-cloud-storage
+google-cloud-storage==1.42.0
 google-auth-oauthlib
 google-auth

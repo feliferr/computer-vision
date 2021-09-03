@@ -14,7 +14,7 @@ def main(input_path, output_path):
     print(f"Folder paths: {folder_paths}")
     print(f"Number of folders :{len(folder_paths)}")
 
-    create_labels = ["basketball", "boxing", "chess"]
+    # create_labels = ["basketball", "boxing", "chess"]
 
     data = pd.DataFrame()
 
@@ -22,8 +22,8 @@ def main(input_path, output_path):
     labels = []
     counter = 0
     for i, folder_path in tqdm(enumerate(folder_paths), total=len(folder_paths)):
-        if folder_path not in create_labels:
-            continue
+        # if folder_path not in create_labels:
+        #     continue
         image_paths = os.listdir(os.path.join(input_path, folder_path))
         label = folder_path
 

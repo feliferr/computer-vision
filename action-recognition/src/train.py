@@ -142,6 +142,8 @@ def main(input,
     X = df['image_path'].values
     y = df['target'].values
 
+    n_classes = len(set(y))
+
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.10, random_state=100)
 
     print(f"Training instances: {len(X_train)}")
@@ -155,7 +157,7 @@ def main(input,
     test_loader = DataLoader(test_data, batch_size=batch_size, shuffle=True)
 
     # initializing the Neural Network model
-    model = cnn_models.SimpleCNN().to("cpu:0") # TODO put a parameter to set de device
+    model = cnn_models.SimpleCNN(n_classes).to(device)
     print(model)
 
     # total parameters and trainable parameters
