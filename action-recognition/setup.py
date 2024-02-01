@@ -121,7 +121,7 @@ setup(
         "gcloud",
         "Pillow",
         "pandas==1.1.5",
-        "scikit-learn==0.24.2",
+        "scikit-learn==1.0.1",
         "torch==1.9.0",
         "torchvision==0.10.0",
         "tqdm==4.62.1",
